@@ -3,38 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neha Gadge | Portfolio</title>
+  <title>Neha Gadge | Data Analytics Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <header>
     <h1>Hi, I'm Neha Gadge 👩‍💻</h1>
-    <p>Final Year B.Tech CSE | Data Analytics</p>
+    <p>Final Year B.Tech CSE | Aspiring Data Analyst</p>
+    <p>Turning data into actionable insights 📊 | Skilled in Power BI, Python, SQL, Excel</p>
+    <button class="btn" onclick="scrollToSection('projects')">View My Work</button>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I’m passionate about data analytics, Power BI, Python, and SQL. I love turning data into insights and visual stories.</p>
+    <p>I’m passionate about data analytics and love exploring data to uncover insights that help make better business decisions. 
+       I’m skilled in Power BI, Python, and SQL — and I enjoy transforming complex data into clear visual stories.</p>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
-    <ul>
-      <li><strong>Sales Dashboard (Power BI):</strong> Visualized business sales insights.</li>
-      <li><strong>Python Data Cleaning Project:</strong> Automated data cleaning using Pandas.</li>
-    </ul>
+
+    <div class="project-card">
+      <h3>Sales Dashboard (Power BI)</h3>
+      <p>Visualized top/bottom products, sales trends, and profit insights for business decisions.</p>
+      <a href="https://github.com/nehagadge477/sales-dashboard" target="_blank">🔗 View Project</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Python Data Cleaning</h3>
+      <p>Automated cleaning and preprocessing of large datasets using Pandas and NumPy.</p>
+      <a href="https://github.com/nehagadge477/data-cleaning" target="_blank">🔗 View Project</a>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Technical Skills</h2>
+    <canvas id="skillsChart" width="400" height="300"></canvas>
+  </section>
+
+  <section id="dashboard">
+    <h2>Power BI Dashboard Preview</h2>
+    <img src="powerbi-dashboard.png" alt="Power BI Dashboard Preview" width="80%">
+    <p><a href="https://app.powerbi.com/" target="_blank">🔗 View Live Dashboard</a></p>
+  </section>
+
+  <section id="education">
+    <h2>Education & Certifications</h2>
+    <p><strong>B.Tech in Computer Science (Data Analytics)</strong> – RTMNU University</p>
+    <p>Certifications: Power BI | Python | SQL | Excel</p>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: nehagadge477@gmail.com</p>
-    <p>GitHub: <a href="https://github.com/nehagadge477" target="_blank">github.com/nehagadge477</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/neha-gadge" target="_blank">linkedin.com/in/neha-gadge</a></p>
+    <p>📧 Email: <a href="mailto:nehagadge477@gmail.com">nehagadge477@gmail.com</a></p>
+    <p>🐙 GitHub: <a href="https://github.com/nehagadge477" target="_blank">github.com/nehagadge477</a></p>
+    <p>💼 LinkedIn: <a href="https://linkedin.com/in/neha-gadge-350153367" target="_blank">linkedin.com/in/neha-gadge</a></p>
   </section>
 
   <footer>
-    <p>© 2025 Neha Gadge</p>
+    <p>© 2025 Neha Gadge | Data Analytics Portfolio</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
