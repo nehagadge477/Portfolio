@@ -1,106 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Neha Gadge | Data Analyst</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Neha Gadge | Data Analyst Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
+
 <body>
-  <header>
-    <h1>Hi, I'm Neha Gadge 👋</h1>
 
-    <h3>Data Analyst | Power BI | SQL | Python | Excel</h3>
+    <!-- ================= NAVBAR ================= -->
 
-    <p>
-        I transform raw data into meaningful dashboards and business insights
-        using Power BI, SQL, Python and Excel.
-    </p>
+    <nav>
 
-    <button class="btn" onclick="scrollToSection('projects')">
-        View My Projects
-    </button>
-</header>
+        <div class="logo">
 
+            Neha Gadge
 
+        </div>
 
-  <section id="about">
-    <h2>About Me</h2>
+        <ul>
 
-    <p>
-        I'm a final-year Computer Science Engineering student passionate about
-        Data Analytics. I enjoy solving business problems through data analysis,
-        interactive dashboards, and data visualization.
-    </p>
+            <li><a href="#about">About</a></li>
 
-    <p>
-        My core skills include Power BI, SQL, Python, Excel, Pandas,
-        NumPy and Data Visualization.
-    </p>
-</section>
-  
+            <li><a href="#projects">Projects</a></li>
 
-   <section id="projects">
-  <h2>Projects</h2>
+            <li><a href="#skills">Skills</a></li>
 
-  <div class="project-card">
-    <h3>Sales Dashboard (Power BI)</h3>
-    <p>Visualized top/bottom products, sales trends, and profit insights for business decisions.</p>
-    <a href="https://github.com/nehagadge477/sales-dashboard" target="_blank"> 🔗 View Project</a></span>
-  </div>
+            <li><a href="#education">Education</a></li>
 
-  <div class="project-card">
-    <h3>Insurance Data Analysis</h3>
-    <p>Analyzed insurance dataset to uncover trends in claims, charges, and customer demographics using Python, Pandas, and Power BI.</p>
-    <img src="insurance-dashboard.png" alt="Insurance Dashboard Preview" width="80%">
-    <a href="https://github.com/nehagadge477/insurance-data-analysis" target="_blank">🔗 View Project</a>
-  </div>
-</section>
-  
+            <li><a href="#contact">Contact</a></li>
 
-  <section id="skills">
-    <h2>Technical Skills</h2>
-    <canvas id="skillsChart" width="400" height="300"></canvas>
-  </section>
+        </ul>
 
+    </nav>
 
-  <div class="skill-list">
-    <span>Power BI</span>
-    <span>Python</span>
-    <span>SQL</span>
-    <span>Excel</span>
-    <span>Pandas</span>
-    <span>NumPy</span>
-    <span>Matplotlib</span>
-    <span>Git & GitHub</span>
-</div>
+    <!-- ================= HERO ================= -->
 
-  <section id="dashboard">
-    <h2>Power BI Dashboard Preview</h2>
-    <img src="powerbi-dashboard.png" alt="Power BI Dashboard Preview" width="80%">
-    <p><a href="https://app.powerbi.com/" target="_blank">🔗 View Live Dashboard</a></p>
-  </section>
+    <header>
 
-  <section id="education">
-    <h2>Education & Certifications</h2>
-    <p><strong>B.Tech in Computer Science (Data Analytics)</strong> – RTMNU University</p>
-    <p>Certifications: Power BI | Python | SQL | Excel</p>
-  </section>
+        <div class="hero">
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>📧 Email: <a href="mailto:nehagadge477@gmail.com">nehagadge477@gmail.com</a></p>
-    <p>🐙 GitHub: <a href="https://github.com/nehagadge477" target="_blank">github.com/nehagadge477</a></p>
-    <p>💼 LinkedIn: <a href="https://linkedin.com/in/neha-gadge-350153367" target="_blank">linkedin.com/in/neha-gadge</a></p>
-  </section>
+            <img src="profile.jpg" class="profile">
 
-  <footer>
-    <p> 2026 Neha Gadge | Data Analytics Portfolio</p>
-  </footer>
+            <h1>Hi, I'm Neha Gadge 👋</h1>
 
-  <script src="script.js"></script>
+            <h2 id="typing"></h2>
+
+            <p>
+
+                Passionate Data Analyst skilled in
+                Power BI, SQL, Python and Excel.
+
+                I love transforming raw data into
+                meaningful business insights.
+
+            </p>
+
+            <div class="hero-btn">
+
+                <button class="btn"
+                    onclick="scrollToSection('projects')">
+
+                    View Projects
+
+                </button>
+
+                <a href="Resume.pdf"
+                    class="btn">
+
+                    Download Resume
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <h2>About Me</h2>
+
+        <p>
+
+            I'm a Final Year Computer Science Engineering student
+            passionate about Data Analytics.
+
+            I enjoy solving business problems through dashboards,
+            reports, visualization and data storytelling.
+
+        </p>
+
+    </section>
+
+    <!-- ================= STATS ================= -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <h2 class="counter" data-target="2">0</h2>
+
+            <p>Projects</p>
+
+        </div>
+
+        <div class="stat">
+
+            <h2 class="counter" data-target="8">0</h2>
+
+            <p>Skills</p>
+
+        </div>
+
+        <div class="stat">
+
+            <h2 class="counter" data-target="4">0</h2>
+
+            <p>Certificates</p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects">
+
+        <h2>Projects</h2>
+
+        <div class="project-container">
+
+            <div class="project-card">
+
+                <img src="sales-dashboard.png">
+
+                <h3>Sales Dashboard</h3>
+
+                <p>
+
+                    Power BI dashboard for
+                    Top Products,
+                    Sales Trend,
+                    KPIs,
+                    Profit Analysis.
+
+                </p>
+
+                <a href="https://github.com/nehagadge477/sales-dashboard"
+                    target="_blank">
+
+                    <i class="fa-brands fa-github"></i>
+
+                    View Project
+
+                </a>
+
+            </div>
+
+            <div class="project-card">
+
+                <img src="insurance-dashboard.png">
+
+                <h3>Insurance Analysis</h3>
+
+                <p>
+
+                    Python, Pandas &
+                    Power BI project
+                    analyzing insurance
+                    claims and customer insights.
+
+                </p>
+
+                <a href="https://github.com/nehagadge477/insurance-data-analysis"
+                    target="_blank">
+
+                    <i class="fa-brands fa-github"></i>
+
+                    View Project
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+
+    <section id="skills">
+
+        <h2>Technical Skills</h2>
+
+        <canvas id="skillsChart"></canvas>
+
+        <div class="skill-list">
+
+            <span>Power BI</span>
+
+            <span>SQL</span>
+
+            <span>Python</span>
+
+            <span>Excel</span>
+
+            <span>Pandas</span>
+
+            <span>NumPy</span>
+
+            <span>Matplotlib</span>
+
+            <span>Git</span>
+
+        </div>
+
+    </section>
+
+    <!-- ================= EDUCATION ================= -->
+
+    <section id="education">
+
+        <h2>Education</h2>
+
+        <p>
+
+            <b>B.Tech Computer Science Engineering</b>
+
+        </p>
+
+        <p>
+
+            RTMNU University
+
+        </p>
+
+        <h3>Certifications</h3>
+
+        <p>
+
+            Power BI |
+            SQL |
+            Python |
+            Excel
+
+        </p>
+
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <h2>Contact</h2>
+
+        <div class="contact-box">
+
+            <p>
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <a href="mailto:nehagadge477@gmail.com">
+
+                    nehagadge477@gmail.com
+
+                </a>
+
+            </p>
+
+            <p>
+
+                <i class="fa-brands fa-github"></i>
+
+                <a href="https://github.com/nehagadge477">
+
+                    GitHub
+
+                </a>
+
+            </p>
+
+            <p>
+
+                <i class="fa-brands fa-linkedin"></i>
+
+                <a href="https://linkedin.com/in/neha-gadge-350153367">
+
+                    LinkedIn
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Neha Gadge | Data Analyst Portfolio
+
+    </footer>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>
 
 
