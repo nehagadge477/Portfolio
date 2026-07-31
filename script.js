@@ -1,229 +1,152 @@
-// ===============================
-// Typing Animation
-// ===============================
+// =======================================
+// LOADER
+// =======================================
 
-const text = [
+window.addEventListener("load", () => {
+
+    const loader = document.getElementById("loader");
+
+    loader.style.opacity = "0";
+
+    setTimeout(() => {
+
+        loader.style.display = "none";
+
+    }, 600);
+
+});
+
+// =======================================
+// TYPING ANIMATION
+// =======================================
+
+const words = [
+
     "Data Analyst",
+
     "Power BI Developer",
+
     "SQL Enthusiast",
+
     "Python Programmer",
+
     "Excel Expert"
+
 ];
 
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
+let wordIndex = 0;
 
-(function type() {
+let charIndex = 0;
 
-    if (count === text.length) {
-        count = 0;
-    }
+let typing = true;
 
-    currentText = text[count];
+const typingElement = document.getElementById("typing");
 
-    letter = currentText.slice(0, ++index);
+function typeEffect() {
 
-    document.getElementById("typing").textContent = letter;
+    const currentWord = words[wordIndex];
 
-    if (letter.length === currentText.length) {
+    if (typing) {
 
-        setTimeout(() => {
+        typingElement.textContent = currentWord.substring(0, charIndex++);
 
-            index = 0;
+        if (charIndex > currentWord.length) {
 
-            count++;
+            typing = false;
 
-            type();
+            setTimeout(typeEffect, 1500);
 
-        }, 1500);
+            return;
+
+        }
 
     } else {
 
-        setTimeout(type, 100);
+        typingElement.textContent = currentWord.substring(0, charIndex--);
+
+        if (charIndex < 0) {
+
+            typing = true;
+
+            wordIndex++;
+
+            if (wordIndex >= words.length) {
+
+                wordIndex = 0;
+
+            }
+
+        }
 
     }
 
-})();
-
-
-// ===============================
-// Smooth Scroll
-// ===============================
-
-function scrollToSection(id) {
-
-    document.getElementById(id).scrollIntoView({
-
-        behavior: "smooth"
-
-    });
+    setTimeout(typeEffect, typing ? 90 : 40);
 
 }
 
+typeEffect();
 
-// ===============================
-// Animated Counter
-// ===============================
+// =======================================
+// SMOOTH SCROLL
+// =======================================
+
+document.querySelectorAll('nav a').forEach(link => {
+
+    link.addEventListener("click", function (e) {
+
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+
+        target.scrollIntoView({
+
+            behavior: "smooth"
+
+        });
+
+    });
+
+});
+
+// =======================================
+// COUNTER
+// =======================================
 
 const counters = document.querySelectorAll(".counter");
 
-counters.forEach(counter => {
-
-    counter.innerText = "0";
-
-    const updateCounter = () => {
-
-        const target = +counter.getAttribute("data-target");
-
-        const c = +counter.innerText;
-
-        const increment = target / 100;
-
-        if (c < target) {
-
-            counter.innerText = `${Math.ceil(c + increment)}`;
-
-            setTimeout(updateCounter, 20);
-
-        } else {
-
-            counter.innerText = target + "+";
-
-        }
-
-    };
-
-    updateCounter();
-
-});
-
-
-// ===============================
-// Skills Chart
-// ===============================
-
-const ctx = document.getElementById("skillsChart");
-
-new Chart(ctx, {
-
-    type: "bar",
-
-    data: {
-
-        labels: [
-
-            "Power BI",
-
-            "SQL",
-
-            "Python",
-
-            "Excel",
-
-            "Pandas",
-
-            "NumPy",
-
-            "Matplotlib",
-
-            "Git"
-
-        ],
-
-        datasets: [{
-
-            label: "Skill Level",
-
-            data: [
-
-                90,
-
-                88,
-
-                85,
-
-                92,
-
-                80,
-
-                75,
-
-                78,
-
-                82
-
-            ],
-
-            backgroundColor: [
-
-                "#0077ff",
-
-                "#00a2ff",
-
-                "#00c6ff",
-
-                "#4caf50",
-
-                "#ff9800",
-
-                "#9c27b0",
-
-                "#ff5722",
-
-                "#607d8b"
-
-            ],
-
-            borderRadius: 10
-
-        }]
-
-    },
-
-    options: {
-
-        responsive: true,
-
-        plugins: {
-
-            legend: {
-
-                display: false
-
-            }
-
-        },
-
-        scales: {
-
-            y: {
-
-                beginAtZero: true,
-
-                max: 100
-
-            }
-
-        }
-
-    }
-
-});
-
-
-// ===============================
-// Scroll Reveal Animation
-// ===============================
-
-const observer = new IntersectionObserver((entries) => {
+const counterObserver = new IntersectionObserver(entries => {
 
     entries.forEach(entry => {
 
         if (entry.isIntersecting) {
 
-            entry.target.classList.add("show");
+            const counter = entry.target;
+
+            const target = +counter.dataset.target;
+
+            let count = 0;
+
+            const update = () => {
+
+                count += Math.ceil(target / 80);
+
+                if (count < target) {
+
+                    counter.innerText = count;
+
+                    requestAnimationFrame(update);
+
+                } else {
+
+                    counter.innerText = target + "+";
+
+                }
+
+            };
+
+            update();
+
+            counterObserver.unobserve(counter);
 
         }
 
@@ -231,76 +154,310 @@ const observer = new IntersectionObserver((entries) => {
 
 });
 
-document.querySelectorAll("section").forEach(sec => {
+counters.forEach(counter => counterObserver.observe(counter));
 
-    sec.classList.add("hidden");
+// =======================================
+// CHART
+// =======================================
 
-    observer.observe(sec);
+const ctx = document.getElementById("skillsChart");
+
+if (ctx) {
+
+new Chart(ctx,{
+
+type:"radar",
+
+data:{
+
+labels:[
+
+"Power BI",
+
+"SQL",
+
+"Python",
+
+"Excel",
+
+"Pandas",
+
+"NumPy",
+
+"DAX",
+
+"Git"
+
+],
+
+datasets:[{
+
+label:"Skill Level",
+
+data:[95,90,88,95,85,82,80,85],
+
+backgroundColor:"rgba(59,130,246,.25)",
+
+borderColor:"#38bdf8",
+
+pointBackgroundColor:"#06b6d4",
+
+borderWidth:3
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{
+
+labels:{
+
+color:"white"
+
+}
+
+}
+
+},
+
+scales:{
+
+r:{
+
+angleLines:{
+
+color:"#555"
+
+},
+
+grid:{
+
+color:"#444"
+
+},
+
+pointLabels:{
+
+color:"white"
+
+},
+
+ticks:{
+
+display:false
+
+}
+
+}
+
+}
+
+}
 
 });
 
-
-// ===============================
-// Greeting Message
-// ===============================
-
-const hour = new Date().getHours();
-
-let greeting = "";
-
-if (hour < 12) {
-
-    greeting = "☀️ Good Morning";
-
 }
-else if (hour < 18) {
 
-    greeting = "🌤️ Good Afternoon";
+// =======================================
+// SCROLL REVEAL
+// =======================================
 
-}
-else {
+const observer = new IntersectionObserver(entries=>{
 
-    greeting = "🌙 Good Evening";
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
 
 }
 
-console.log(greeting + " Neha!");
+});
 
+});
 
-// ===============================
-// Back To Top Button
-// ===============================
+document.querySelectorAll("section").forEach(sec=>{
 
-const topBtn = document.createElement("button");
+sec.classList.add("hidden");
 
-topBtn.innerHTML = "⬆";
+observer.observe(sec);
 
-topBtn.id = "topBtn";
+});
+
+// =======================================
+// ACTIVE NAV LINK
+// =======================================
+
+const sections=document.querySelectorAll("section");
+
+const navLinks=document.querySelectorAll("nav a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(sec=>{
+
+const top=sec.offsetTop-180;
+
+if(pageYOffset>=top){
+
+current=sec.getAttribute("id");
+
+}
+
+});
+
+navLinks.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+// =======================================
+// DARK MODE
+// =======================================
+
+const themeBtn=document.getElementById("themeToggle");
+
+if(localStorage.getItem("theme")==="dark"){
+
+document.body.classList.add("dark");
+
+themeBtn.innerHTML="☀️";
+
+}
+
+themeBtn.addEventListener("click",()=>{
+
+document.body.classList.toggle("dark");
+
+if(document.body.classList.contains("dark")){
+
+localStorage.setItem("theme","dark");
+
+themeBtn.innerHTML="☀️";
+
+}else{
+
+localStorage.setItem("theme","light");
+
+themeBtn.innerHTML="🌙";
+
+}
+
+});
+
+// =======================================
+// BACK TO TOP
+// =======================================
+
+const topBtn=document.createElement("button");
+
+topBtn.id="topBtn";
+
+topBtn.innerHTML="↑";
 
 document.body.appendChild(topBtn);
 
-window.onscroll = function () {
+window.addEventListener("scroll",()=>{
 
-    if (document.documentElement.scrollTop > 300) {
+if(window.scrollY>400){
 
-        topBtn.style.display = "block";
+topBtn.style.display="block";
 
-    } else {
+}else{
 
-        topBtn.style.display = "none";
+topBtn.style.display="none";
 
-    }
+}
+
+});
+
+topBtn.onclick=()=>{
+
+window.scrollTo({
+
+top:0,
+
+behavior:"smooth"
+
+});
 
 };
 
-topBtn.onclick = function () {
+// =======================================
+// GREETING
+// =======================================
 
-    window.scrollTo({
+const hour=new Date().getHours();
 
-        top: 0,
+let greeting="";
 
-        behavior: "smooth"
+if(hour<12){
 
-    });
+greeting="☀ Good Morning";
 
-};
+}
+
+else if(hour<18){
+
+greeting="🌤 Good Afternoon";
+
+}
+
+else{
+
+greeting="🌙 Good Evening";
+
+}
+
+console.log(greeting+" Neha!");
+
+// =======================================
+// BUTTON RIPPLE EFFECT
+// =======================================
+
+document.querySelectorAll(".btn").forEach(button=>{
+
+button.addEventListener("click",function(e){
+
+const circle=document.createElement("span");
+
+circle.classList.add("ripple");
+
+const size=Math.max(this.clientWidth,this.clientHeight);
+
+circle.style.width=size+"px";
+
+circle.style.height=size+"px";
+
+circle.style.left=e.offsetX-size/2+"px";
+
+circle.style.top=e.offsetY-size/2+"px";
+
+this.appendChild(circle);
+
+setTimeout(()=>{
+
+circle.remove();
+
+},600);
+
+});
+
+});
